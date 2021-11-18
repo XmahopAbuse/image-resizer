@@ -21,11 +21,12 @@ class ImageViewSet(viewsets.ModelViewSet):
         
         image = self.get_object()
         try:
-            print(type(request.data['width']))
+            new_width = request.data['width'] if request.data['width'] else image.width
+            print(new_width)
 
-            original_image = PIL.Image.open(image.picture)
-            resized_image = original_image.resize((new_width, new_height))
-            resized_image.save(settings.MEDIA_ROOT + "/" + str((new_width, new_height)) + image.name)
+            # original_image = PIL.Image.open(image.picture)
+            # resized_image = original_image.resize((new_width, new_height))
+            # resized_image.save(settings.MEDIA_ROOT + "/" + str((new_width, new_height)) + image.name)
 
 
             # new_image = Image(picture=resized_image, parent_picture=image.id)
